@@ -2,6 +2,10 @@
 
 
 #include <math.h>
+#include "../packages/sfml-system.2.3.2.0/build/native/include/SFML/System/Vector2.hpp"
+
+
+
 // #include <SFML/System.hpp>
 
 
@@ -56,5 +60,89 @@ template <typename typeOfData> class Vector
 			return this;
 			}
 
+		typeOfData operator * ( const typeOfData factor )
+			{
+			return Vector ( x * factor, y * factor );
+			}
+
+		Vector operator * ( Vector const vectorToMul )
+			{
+			return ( x * vectorToMul.x + y * vectorToMul.y );
+			}
+
+		Vector& Vector::operator *= ( const typeOfData factor )
+			{
+			this->x = this->x * factor;
+			this->y = this->y * factor;
+
+			return *this;
+			}
+
+		Vector operator - ()
+			{
+			return  Vector ( ( -x ), ( -y ) );
+			}
+
+		Vector operator / ( const float factor )
+			{
+			return Vector ( ( x / factor ), ( y / factor ) );
+			}
+
+		Vector& Vector::operator /= ( const typeOfData factor )
+			{
+			this->x = this->x / factor;
+			this->y = this->y / factor;
+
+			return *this;
+			}
+
+		// value getters;
+		typeOfData length()
+			{
+			return ( sqrt ( ( x * x ) + ( y * y ) ) );
+			}
+
+		Vector direction()
+			{
+			return Vector ( ( x / length() ), ( y / length() ) );
+			}
+
+		sf::Vector2f convertToSfVector()
+			{
+			return sf::Vector2f ( x, y );
+			}
+
 	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
