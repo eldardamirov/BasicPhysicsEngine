@@ -6,25 +6,31 @@
 class Object
 	{
 	public:
-		void updatePosition ( FloatVector2d& position, FloatVector2d& velocity, FloatVector2d& force, const float dt, const float mass )
+		Object ( float massTemp )
+			{
+			mass = massTemp;
+			}
+
+
+		void updatePosition()
 			{
 			velocity = velocity + ( force / mass );
 			position = position + ( velocity * dt );
 			}
 
-		FloatVector2d getPosition()
+		FloatVector2d* getPosition()
 			{
-			return position;
+			return &position;
 			}
 
-		FloatVector2d getVelocity()
+		FloatVector2d* getVelocity()
 			{
-			return velocity;
+			return &velocity;
 			}
 
-		FloatVector2d getForce()
+		FloatVector2d* getForce()
 			{
-			return force;
+			return &force;
 			}
 
 
@@ -32,7 +38,7 @@ class Object
 		FloatVector2d position;
 		FloatVector2d velocity;
 		FloatVector2d force;
-
+		float mass = 0.0;
 
 
 

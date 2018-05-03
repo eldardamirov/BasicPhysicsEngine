@@ -10,3 +10,6 @@ typedef Vector <float> FloatVector2d;
 
 // Object material point representation circle radius;
 const int circleRadius = 30;
+
+// integration step;
+double dt = 0.05;

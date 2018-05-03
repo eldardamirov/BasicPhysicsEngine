@@ -60,12 +60,12 @@ template <typename typeOfData> class Vector
 			return this;
 			}
 
-		typeOfData operator * ( const typeOfData factor )
+		Vector operator * ( const typeOfData factor )
 			{
 			return Vector ( x * factor, y * factor );
 			}
 
-		Vector operator * ( Vector const vectorToMul )
+		typeOfData operator * ( Vector const vectorToMul )
 			{
 			return ( x * vectorToMul.x + y * vectorToMul.y );
 			}

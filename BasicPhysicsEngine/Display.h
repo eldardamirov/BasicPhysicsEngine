@@ -9,10 +9,19 @@ class Display
 	{
 
 	public:
+		Display ( size_t windowXTemp, size_t windowYTemp, std::string title = "Window" )
+			{
+			windowX = windowXTemp;
+			windowY = windowYTemp;
+
+			init();
+			}
+
+
 	
 		void drawObject ( sf::RenderWindow &window, FloatVector2d position )
 			{
-			sf::CircleShape materialPoint ( 30 );
+			sf::CircleShape materialPoint ( circleRadius );
 			materialPoint.setPosition ( position.convertToSfVector() );
 			materialPoint.setOrigin ( materialPoint.getRadius(), materialPoint.getRadius() );
 
@@ -20,6 +29,15 @@ class Display
 			}
 
 
+	private:
+		size_t windowX = 0, windowY = 0;
+		std::string title = "";
 
+		sf::RenderWindow* window = nullptr;
+
+		void init()
+			{
+			window = new sf::RenderWindow ( sf::VideoMode ( windowX, windowY ), title );
+			}
 
 	};

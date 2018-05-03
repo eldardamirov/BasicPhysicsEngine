@@ -9,17 +9,21 @@
 #define Vector <float> FloatVector2d;
 
 
+
+
+
 int main ()
 	{
-	sf::RenderWindow window ( sf::VideoMode ( 1280, 720 ), "Basic Physics Engine" );
+	Display myDisplay ( 1280, 720, "Basic Physics Engine" );
+	Object myObject ( 5 );
 
-	Object myObject;
 
 	while ( window.isOpen() )
 		{
 		window.clear();
 
-		myObject.updatePosition (  )
+		myObject.updatePosition();
+		
 
 		}
 
