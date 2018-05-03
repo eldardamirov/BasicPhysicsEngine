@@ -13,3 +13,5 @@ const int circleRadius = 30;
 
 // integration step;
 double dt = 0.05;
+
+auto materialPointColor = sf::Color::Blue;

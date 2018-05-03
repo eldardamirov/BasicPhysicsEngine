@@ -6,9 +6,9 @@
 class Object
 	{
 	public:
-		Object ( float massTemp )
+		Object ( float massTemp ) : position ( 300, 300 ), velocity ( 2, 4 ), force ( -3, 5 )
 			{
-			mass = massTemp;
+			mass = massTemp * 1000;
 			}
 
 
@@ -18,19 +18,19 @@ class Object
 			position = position + ( velocity * dt );
 			}
 
-		FloatVector2d* getPosition()
+		FloatVector2d getPosition()
 			{
-			return &position;
+			return position;
 			}
 
-		FloatVector2d* getVelocity()
+		FloatVector2d getVelocity()
 			{
-			return &velocity;
+			return velocity;
 			}
 
-		FloatVector2d* getForce()
+		FloatVector2d getForce()
 			{
-			return &force;
+			return force;
 			}
 
 

@@ -18,13 +18,15 @@ int main ()
 	Object myObject ( 5 );
 
 
-	while ( window.isOpen() )
+
+	while ( myDisplay.getDisplayWindow()->isOpen() )
 		{
-		window.clear();
+		myDisplay.clear();
 
 		myObject.updatePosition();
+		myDisplay.drawObject ( myObject.getPosition() );
 		
-
+		myDisplay.display();
 		}
 
 	return 0;

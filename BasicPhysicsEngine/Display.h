@@ -19,13 +19,29 @@ class Display
 
 
 	
-		void drawObject ( sf::RenderWindow &window, FloatVector2d position )
+		void drawObject ( FloatVector2d position )
 			{
 			sf::CircleShape materialPoint ( circleRadius );
 			materialPoint.setPosition ( position.convertToSfVector() );
 			materialPoint.setOrigin ( materialPoint.getRadius(), materialPoint.getRadius() );
+			materialPoint.setFillColor ( materialPointColor );
 
-			window.draw ( materialPoint );
+			window->draw ( materialPoint );
+			}
+
+		sf::RenderWindow* getDisplayWindow()
+			{
+			return window;
+			}
+
+		void clear()
+			{
+			window->clear();
+			}
+
+		void display()
+			{
+			window->display();
 			}
 
 
