@@ -33,6 +33,11 @@ class Object
 			return force;
 			}
 
+		void setForce ( FloatVector2d newForce )
+			{
+			force = newForce;
+			}
+
 
 	private:
 		FloatVector2d position;
