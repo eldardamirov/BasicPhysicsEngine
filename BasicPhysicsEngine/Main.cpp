@@ -10,6 +10,8 @@
 #define Vector <float> FloatVector2d;
 
 
+void drawSpring ( FloatVector2d position1, FloatVector2d position2, sf::RenderWindow& window );
+
 
 
 
@@ -28,26 +30,34 @@ int main ()
 	sf::Clock timer;
 	float totalDelay = 0.f;
 
+	
 
 	while ( myDisplay.getDisplayWindow()->isOpen() )
 		{
 		totalDelay = totalDelay + timer.getElapsedTime().asSeconds();
 		timer.restart();
 
+		while ( totalDelay > dt )
+			{
+			myDisplay.clear();
 
-		myDisplay.clear();
+			currentDistance = myObject2.getPosition() - myObject.getPosition();
 
-		currentDistance = myObject2.getPosition() - myObject.getPosition();
+			force = ( currentDistance / currentDistance.length() ) * ( currentDistance.length() - initialDistance ) * k;
 
-		force = ( currentDistance / currentDistance.length() ) * ( currentDistance.length() - initialDistance ) * k;
-		
-		myObject.setForce ( force );
-		myObject2.setForce ( -force );
+			myObject.setForce ( force );
+			myObject2.setForce ( -force );
 
-		initialDistance = currentDistance.length();
+			initialDistance = currentDistance.length();
 
-		myObject.updatePosition();
-		myObject2.updatePosition();
+			myObject.updatePosition();
+			myObject2.updatePosition();
+
+			drawSpring ( myObject.getPosition(), myObject2.getPosition(), *myDisplay.getDisplayWindow() );
+
+			totalDelay = totalDelay - dt;
+			}
+
 	//	myObject3.updatePosition();
 
 		myDisplay.drawObject ( myObject );
@@ -62,3 +72,22 @@ int main ()
 
 
 
+
+void drawSpring ( FloatVector2d position1, FloatVector2d position2, sf::RenderWindow& window )
+	{
+	const float rect_length = 100;
+
+	sf::RectangleShape rect ( sf::Vector2f ( rect_length, 10 ) );
+	rect.setOrigin ( rect.getSize() / 2.f );
+	rect.setPosition ( ( position1 + position2 ).convertToSfVector() / 2.f );
+	rect.setFillColor ( sf::Color ( 127, 127, 127 ) );
+
+	float angle = atan2f ( position1.y - position2.y, position1.x - position1.x );
+	angle = angle / pi * 180;
+	rect.setRotation ( angle );
+
+	rect.scale ( ( position1 - position2 ).length() / rect_length, 1 );
+
+	window.draw ( rect );
+
+	}

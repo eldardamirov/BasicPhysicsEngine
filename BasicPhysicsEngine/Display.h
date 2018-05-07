@@ -39,6 +39,8 @@ class Display
 			drawObject ( FloatVector2d ( x, y ) );
 			}
 
+		
+
 		sf::RenderWindow* getDisplayWindow()
 			{
 			return window;
