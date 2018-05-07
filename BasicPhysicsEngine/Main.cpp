@@ -15,7 +15,9 @@
 int main ()
 	{
 	Display myDisplay ( 1280, 720, "Basic Physics Engine" );
-	Object myObject ( 5 );
+	Object myObject ( 5, FloatVector2d ( 50, 50 ), FloatVector2d ( 3, 3 ), FloatVector2d ( 5, 5 ) );
+	Object myObject2 ( 5, FloatVector2d ( 550, 150 ), FloatVector2d ( 3, 3 ), FloatVector2d ( 5, 5 ) );
+	Object myObject3 ( 5, FloatVector2d ( 450, 650 ), FloatVector2d ( 3, 3 ), FloatVector2d ( 5, 5 ) );
 
 
 

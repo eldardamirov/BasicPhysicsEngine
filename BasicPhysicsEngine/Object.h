@@ -6,9 +6,9 @@
 class Object
 	{
 	public:
-		Object ( float massTemp ) : position ( 300, 300 ), velocity ( 2, 4 ), force ( -3, 5 )
+		Object ( float massTemp, FloatVector2d positionTemp, FloatVector2d velocityTemp, FloatVector2d forceTemp ) : position ( positionTemp.x, positionTemp.y ), velocity ( velocityTemp.x, velocityTemp.y ), force ( forceTemp.x, forceTemp.y )
 			{
-			mass = massTemp * 1000;
+			mass = massTemp;
 			}
 
 
